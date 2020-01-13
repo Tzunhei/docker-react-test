@@ -14,7 +14,6 @@ script:
 
 # config to tell travis how deploy to aws
 deploy:
-  edge: true
   - provider: elasticbeanstalk
   region: "us-east-2"
   app: "docker-react"
