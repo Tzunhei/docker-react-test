@@ -10,4 +10,4 @@ before_install:
 
 # contains all the command needed to run our test suites
 script:
-  - docker run stephengrider/docker-react npm run test -- --coverage
+  - docker run -e CI=true stephengrider/docker-react npm run test
