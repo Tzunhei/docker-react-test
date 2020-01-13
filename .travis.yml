@@ -1,0 +1,13 @@
+sudo: required
+language: generic
+services:
+  # tell travis we need a copy of docker ready to go
+  - docker
+
+# steps that need to occur before run our tests
+before_install:
+  - docker build -t tzunhei/docker-react-test -f Dockerfile.dev .
+
+# contains all the command needed to run our test suites
+script:
+  - docker run stephengrider/docker-react npm run test -- --coverage
