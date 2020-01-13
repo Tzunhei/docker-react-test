@@ -11,3 +11,18 @@ before_install:
 # contains all the command needed to run our test suites
 script:
   - docker run -e CI=true tzunhei/docker-react-test npm run test
+
+# config to tell travis how deploy to aws
+deploy:
+  edge: true
+  - provider: elasticbeanstalk
+  region: "us-east-2"
+  app: "docker-react"
+  env: "DockerReact-env"
+  bucket_name: "elasticbeanstalk-us-east-2-921802594782"
+  bucket_path: "docker-react"
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: "$AWS_SECRET_KEY"
